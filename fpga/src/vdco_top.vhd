@@ -61,7 +61,7 @@ component TW_COMPOSER
     );
 end component;
 
-component DCO
+component DCO_DDS
     Generic (
         WORD_SIZE : natural := WORD_SIZE;
         BIT_CNT_WIDTH : natural := BIT_CNT_WIDTH
@@ -116,7 +116,7 @@ tw_composer_unit : TW_COMPOSER
     );
 
 
-dco_unit : DCO
+dco_unit : DCO_DDS
     generic map (
         WORD_SIZE => WORD_SIZE
     )
@@ -128,10 +128,5 @@ dco_unit : DCO
         -- OUTPUT INTERFACE
         F_DCO       => F_VDCO
     );
-	
-	F_VDCO<= CLK;
-	--RGB0 <= '1';
-	--RGB1 <= '0';
-	--RGB2 <= '0';
 	
 end architecture;

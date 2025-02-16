@@ -27,7 +27,7 @@ signal bit_cnt            : unsigned(BIT_CNT_WIDTH-1 downto 0);
 signal fill_zero_r: std_logic_vector((BIT_CNT_WIDTH-WORD_SIZE-1) downto 0) := (others=>'0');
 signal tw_r: std_logic_vector(BIT_CNT_WIDTH-1 downto 0);
 signal tw_div2: std_logic_vector(BIT_CNT_WIDTH-1 downto 0);
-signal TW_OFFSET : integer := 21911;
+signal TW_OFFSET : integer := 2433814;
 
 
 begin
@@ -54,10 +54,10 @@ begin
     --  CALCULATE  TW BASED ON INPUT TW  and TW_OFFSET
     -- -------------------------------------------------------------------------
 
-    tw_r <= fill_zero_r & spi_data_r;
+    -- tw_r <= fill_zero_r & spi_data_r;
 
-	tw_div2 <= ('0' & tw_r(BIT_CNT_WIDTH-1 downto 1));
+	-- tw_div2 <= ('0' & tw_r(BIT_CNT_WIDTH-1 downto 1));
 
-	TW <= to_unsigned(TW_OFFSET,32)  - unsigned(tw_div2);
+	TW <= to_unsigned(TW_OFFSET,32)  + unsigned(fill_zero_r & spi_data_r);
 
 end architecture;
